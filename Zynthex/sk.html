@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zynthex - AI-Powered Blockchain Automation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900 font-['Inter'] min-h-screen">
+    <!-- Navigation -->
+    <nav class="backdrop-blur-lg bg-white/80 sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 md:px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <img src="https://i.ibb.co/NdJKZpvd/pixil-frame-0-1.png" alt="Zynthex Logo" class="w-8 h-8 rounded-lg">
+                    <span class="text-xl font-bold text-gray-900">Zynthex</span>
+                </div>
+                <div class="flex items-center space-x-4 md:space-x-6">
+                    <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900 transition-all">
+                        Twitter / X
+                    </a>
+                    <button id="launchAppBtn" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-all">
+                        Launch App
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container mx-auto px-4 md:px-6 py-20">
+        <div class="text-center max-w-4xl mx-auto" data-aos="fade-up">
+            <div class="relative mb-8">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 blur-3xl opacity-20 -z-10"></div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    Next-Gen AI Blockchain Automation
+                </h1>
+            </div>
+            <p class="text-gray-600 text-lg md:text-xl mb-12">
+                Deploy intelligent agents that autonomously manage your crypto assets 24/7. 
+                <span class="font-semibold text-blue-600">Powered by Solana & Machine Learning</span>
+            </p>
+            <div class="flex justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                <button id="joinWaitlistBtn" class="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:scale-[1.02] transition-all transform flex items-center gap-3 shadow-lg hover:shadow-xl">
+                    <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    Join Waitlist
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 md:px-6 pb-24">
+        <div class="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            <!-- Agent Cards Grid -->
+            <div class="space-y-8">
+                <!-- Trading Bot Card -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
+                     data-aos="fade-right">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-all -z-10"></div>
+                    <div class="flex items-start gap-6">
+                        <div class="p-4 bg-blue-50 rounded-xl group-hover:bg-blue-100 transition-all">
+                            <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-semibold mb-2">Smart Trading Agent</h3>
+                                    <p class="text-gray-600">Real-time market analysis & automated execution</p>
+                                </div>
+                                <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Active</span>
+                            </div>
+                            <div class="relative h-40 mb-6">
+                                <canvas id="tradingChart"></canvas>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-2 text-sm text-gray-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span>24h Performance: +2.8%</span>
+                                </div>
+                                <button id="configureBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
+                                    Configure
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yield Optimizer Card -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
+                     data-aos="fade-right" data-aos-delay="100">
+                    <div class="absolute inset-0 bg-gradient-to-r from-green-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-all -z-10"></div>
+                    <div class="flex items-start gap-6">
+                        <div class="p-4 bg-green-50 rounded-xl group-hover:bg-green-100 transition-all">
+                            <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-semibold mb-2">AI Yield Strategist</h3>
+                                    <p class="text-gray-600">Dynamic portfolio optimization across DeFi</p>
+                                </div>
+                                <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-sm rounded-full">Pending</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-6 mb-6">
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <div class="text-sm text-gray-600 mb-1">APY</div>
+                                    <div class="text-2xl font-bold text-green-600">18.4%</div>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <div class="text-sm text-gray-600 mb-1">TVL</div>
+                                    <div class="text-2xl font-bold text-purple-600">$2.4M</div>
+                                </div>
+                            </div>
+                            <button id="optimizeNowBtn" class="w-full py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                                </svg>
+                                Optimize Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Deployment Card -->
+                <div class="bg-gradient-to-br from-blue-600 to-purple-600 p-8 rounded-2xl shadow-lg text-white"
+                     data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center">
+                        <div class="mx-auto mb-6 w-24 h-24 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4">Create New Agent</h3>
+                        <p class="text-blue-100 mb-6">Select from our template library or build custom AI agents</p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <button class="p-4 bg-white/10 rounded-xl hover:bg-white/20 transition flex flex-col items-center gap-2">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                                </svg>
+                                <span>Template</span>
+                            </button>
+                            <button class="p-4 bg-white/10 rounded-xl hover:bg-white/20 transition flex flex-col items-center gap-2">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                <span>Custom</span>
+                            </button>
+                        </div>
+                        <button id="startBuildingBtn" class="w-full py-3 bg-white text-blue-600 rounded-lg hover:bg-gray-100 transition">
+                            Start Building
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Panel -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 h-fit sticky top-8"
+                 data-aos="fade-left">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-2xl font-semibold">Agent Dashboard</h2>
+                    <div class="flex items-center gap-2">
+                        <button class="p-2 hover:bg-gray-100 rounded-lg">
+                            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Performance Card -->
+                    <div class="p-6 bg-gray-50 rounded-xl">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-semibold">Portfolio Performance</h3>
+                            <span class="text-sm text-green-600">+8.2%</span>
+                        </div>
+                        <div class="relative h-48">
+                            <canvas id="portfolioChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <div class="text-sm text-blue-600 mb-1">Active Agents</div>
+                            <div class="text-2xl font-bold">3</div>
+                        </div>
+                        <div class="p-4 bg-purple-50 rounded-lg">
+                            <div class="text-sm text-purple-600 mb-1">Total Value</div>
+                            <div class="text-2xl font-bold">$24,589</div>
+                        </div>
+                    </div>
+
+                    <!-- Wallet Connection -->
+                    <div class="p-6 bg-gray-50 rounded-xl space-y-4">
+                        <div class="text-center">
+                            <div class="mx-auto mb-4 w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
+                                <svg class="w-8 h-8 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold mb-2">Connect Wallet</h3>
+                            <p class="text-sm text-gray-600 mb-4">Secure connection to manage your agents</p>
+                            <button id="connectWalletBtn" class="w-full py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                Connect Wallet
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Join Waitlist Modal -->
+    <div id="waitlistModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+            <h2 class="text-xl font-semibold mb-4">Join Waitlist</h2>
+            <p class="text-gray-600 mb-6">Enter your email address to join the waitlist.</p>
+            <input id="emailInput" type="email" placeholder="Enter email"Enter email" class="w-full py-3 px-4 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <button id="submitEmailBtn" class="w-full py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-all">
+                Submit
+            </button>
+            <button id="closeWaitlistModalBtn" class="w-full py-2 mt-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-all">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Invite Only Modal -->
+    <div id="inviteOnlyModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+            <h2 class="text-xl font-semibold mb-4">Notice</h2>
+            <p class="text-gray-600 mb-6">Zynthex is currently invite only.</p>
+            <button id="closeModalBtn" class="w-full py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-all">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-out-quad'
+        });
+
+        // Chart configurations
+        const chartConfig = {
+            tradingChart: {
+                type: 'line',
+                data: {
+                    labels: ['1h', '2h', '3h', '4h', '5h'],
+                    datasets: [{
+                        data: [65, 59, 80, 81, 56],
+                        borderColor: '#3B82F6',
+                        tension: 0.4,
+                        borderWidth: 2,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { display: false }, y: { display: false } }
+                }
+            },
+            portfolioChart: {
+                type: 'radar',
+                data: {
+                    labels: ['Risk', 'Reward', 'Liquidity', 'Volume', 'Trend'],
+                    datasets: [{
+                        data: [65, 59, 90, 81, 56],
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: '#3B82F6',
+                        pointBackgroundColor: '#3B82F6'
+                    }]
+                },
+                options: {
+                    scales: { 
+                        r: { 
+                            grid: { color: '#E5E7EB' }, 
+                            ticks: { display: false },
+                            angleLines: { color: '#E5E7EB' }
+                        } 
+                    },
+                    elements: { line: { tension: 0.4 } }
+                }
+            }
+        };
+
+        // Initialize charts
+        Object.entries(chartConfig).forEach(([id, config]) => {
+            new Chart(document.getElementById(id), config);
+        });
+
+        // Modal functionality
+        const waitlistModal = document.getElementById('waitlistModal');
+        const inviteOnlyModal = document.getElementById('inviteOnlyModal');
+        const closeWaitlistModalBtn = document.getElementById('closeWaitlistModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const submitEmailBtn = document.getElementById('submitEmailBtn');
+        const buttons = [
+            document.getElementById('launchAppBtn'),
+            document.getElementById('joinWaitlistBtn'),
+            document.getElementById('configureBtn'),
+            document.getElementById('optimizeNowBtn'),
+            document.getElementById('connectWalletBtn'),
+            document.getElementById('startBuildingBtn')
+        ];
+
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                if (event.target.id === 'joinWaitlistBtn') {
+                    waitlistModal.classList.remove('hidden');
+                } else {
+                    inviteOnlyModal.classList.remove('hidden');
+                }
+            });
+        });
+
+        closeWaitlistModalBtn.addEventListener('click', () => {
+            waitlistModal.classList.add('hidden');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            inviteOnlyModal.classList.add('hidden');
+        });
+
+        // Close modals when clicking outside of them
+        window.addEventListener('click', (event) => {
+            if (event.target === waitlistModal) {
+                waitlistModal.classList.add('hidden');
+            } else if (event.target === inviteOnlyModal) {
+                inviteOnlyModal.classList.add('hidden');
+            }
+        });
+
+        // Submit email functionality
+        submitEmailBtn.addEventListener('click', () => {
+            const emailInput = document.getElementById('emailInput').value;
+            if (emailInput) {
+                alert(`Thank you! Your email ${emailInput} has been added to the waitlist.`);
+                waitlistModal.classList.add('hidden');
+                document.getElementById('emailInput').value = ''; // Clear input field
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+    </script>
+</body>
+</html>
